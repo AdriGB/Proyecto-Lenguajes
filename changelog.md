@@ -57,6 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Eliminados los enlaces redundantes `/login`, `/registro`, `/operador` y `/admin` del pie de página, centralizando la autenticación y el control de accesos exclusivamente en el `Navbar.jsx` y en las rutas protegidas por rol.
 
 ### Fixed
+- **Método de Eliminación en `usersApi` (`api.js`)**:
+  - Incorporado el método `delete: (id) => apiRequest('/users/' + id, { method: 'DELETE' })` y `getById` en el objeto cliente [`usersApi`](frontend/src/services/api.js), subsanando el error `usersApi.delete is not a function` al intentar eliminar cuentas de usuario desde el panel de administración.
 - **Propagación de Eventos en Botones de Enlace (`Button.jsx`)**:
   - Corregido el componente [`frontend/src/components/Button.jsx`](frontend/src/components/Button.jsx) para propagar la propiedad `onClick` hacia el componente `<Link to={to}>`, permitiendo que botones del Hero con anclas como `#proyectos` o funciones de scroll se ejecuten sin interrupciones.
 

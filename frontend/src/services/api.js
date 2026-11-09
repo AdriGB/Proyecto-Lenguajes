@@ -225,11 +225,23 @@ export const usersApi = {
   list: () => apiRequest('/users', { method: 'GET' }),
 
   /**
+   * Get single user by ID
+   * @param {number|string} id
+   */
+  getById: (id) => apiRequest(`/users/${id}`, { method: 'GET' }),
+
+  /**
    * Update user role
    * @param {number|string} id
    * @param {'usuario_normal'|'operador'|'administrador'} role
    */
   updateRole: (id, role) => apiRequest(`/users/${id}/role`, { method: 'PUT', body: { role } }),
+
+  /**
+   * Delete user account
+   * @param {number|string} id
+   */
+  delete: (id) => apiRequest(`/users/${id}`, { method: 'DELETE' }),
 };
 
 export default {
