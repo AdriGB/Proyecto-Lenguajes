@@ -80,12 +80,32 @@ Formularios
 - Etiquetas visibles.
 - Indicadores claros para errores y validaciones.
 - Botones de envío consistentes con el diseño general.
-Paneles administrativos
-- Navegación clara entre secciones.
-- Tarjetas para indicadores.
-- Tablas legibles y adaptables.
-- Gráficos con colores coherentes con la paleta.
-- Acciones de edición y eliminación claramente diferenciadas.
+Carrusel de proyectos (`ProjectCarousel`)
+- Ubicado en la cabecera de la página de inicio previo a la sección Hero.
+- Navegación automática temporizada (5 segundos) con pausa interactiva al situar el cursor.
+- Controles de navegación manual: flechas direccionales izquierda/derecha e indicadores de posición por puntos activos.
+- Visualización de imagen representativa, insignia de estado ("PROYECTO DESTACADO"), título, descripción resumida y badges de tecnologías.
+- Botón de acceso directo hacia el detalle del proyecto o hacia el catálogo de demostraciones.
+Pie de página (`Footer`)
+- Borde superior con acento luminoso sutil (`bg-gradient-to-r from-transparent via-sky-500/50 to-transparent`) y halo difuminado superior.
+- Organización equilibrada en 4 columnas:
+  1. *Identidad & Misión:* Logotipo animado `Portfolio.Ether`, reseña institucional y cápsula de estado del servidor en Localhost.
+  2. *Navegación rápida:* Enlaces a secciones clave con icono de flecha desplazable en hover.
+  3. *Stack Tecnológico:* Etiquetas unificadas de las tecnologías del proyecto (React 18, Vite, Tailwind CSS, Node.js, SQLite, Lucide, Recharts).
+  4. *Conectividad:* Buzón de correo oficial (`contacto@portfolio.local`) y especificaciones del servidor REST local.
+- Barra inferior con aviso de evaluación académica y botón interactivo "Subir" con scroll suave hacia el inicio (`window.scrollTo`).
+- Exclusión deliberada de accesos directos al sistema para preservar la limpieza visual y canalizar la autenticación a través del Navbar.
+Paneles administrativos y de operador
+- Componentes compartidos (`dashboard/common`):
+  - `StatCard`: tarjeta métrica con valor numérico, unidad, icono contextual y pie descriptivo.
+  - `FilterSearchBar`: barra de búsqueda con borrado instantáneo y pestañas de filtrado reactivo.
+  - `EmptyState`: contenedor ilustrado para listados vacíos o búsquedas sin coincidencia.
+  - `ConfirmDeleteModal`: modal de alerta destructiva reutilizable con advertencia de irreversibilidad.
+  - `UnauthorizedView`: pantalla estandarizada de acceso denegado (403) con opción de regreso.
+- Navegación clara entre secciones y pestañas de dominio (`AdminTabsNav`).
+- Tablas legibles con soporte de vista de tarjetas en pantallas móviles (`InquiryTable`, `AdminProjectsTab`, `AdminUsersTab`).
+- Gráficos estadísticos coherentes con la paleta oscura mediante Recharts (`AdminOverviewTab`).
+- Formularios modales con validaciones en tiempo real y selector de iconos Lucide (`ServiceFormModal`).
 
 ## 6. Fondos, bordes y efectos
 - Predominarán los fondos oscuros sólidos.

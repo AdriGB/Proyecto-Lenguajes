@@ -42,6 +42,8 @@ Almacena los proyectos y demostraciones publicados en el portfolio.
 | `created_at` | DATETIME | NOT NULL DEFAULT CURRENT_TIMESTAMP | Fecha de creación. |
 | `updated_at` | DATETIME | NOT NULL DEFAULT CURRENT_TIMESTAMP | Fecha de última modificación. |
 
+Los proyectos activos (`is_published = 1`) alimentan dinámicamente el carrusel interactivo de la portada (`ProjectCarousel`) y la sección de vista previa de la página principal (`ProjectsSection`). El acceso al catálogo detallado y código fuente está protegido para usuarios autenticados en `/proyectos`.
+
 ## 4. Tabla `services`
 
 Almacena los servicios ofrecidos en el portfolio.

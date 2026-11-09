@@ -7,6 +7,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-11-08
+
+### Added
+- **Modularización del Módulo Home (`frontend/src/components/home/`)**:
+  - Desacoplamiento de [`frontend/src/pages/Home.jsx`](frontend/src/pages/Home.jsx) en componentes independientes de alta cohesión:
+    - [`HeroSection.jsx`](frontend/src/components/home/HeroSection.jsx): Presentación profesional, enlaces de acción rápida y desplazamiento fluido hacia secciones.
+    - [`AboutSection.jsx`](frontend/src/components/home/AboutSection.jsx): Información de perfil, formación académica y visión de desarrollo.
+    - [`ServicesSection.jsx`](frontend/src/components/home/ServicesSection.jsx): Catálogo interactivo de servicios con iconos Lucide y alcance técnico.
+    - [`ProjectsSection.jsx`](frontend/src/components/home/ProjectsSection.jsx): Vista previa de proyectos con etiquetas tecnológicas, enlaces y controlador de imágenes con fallback en caso de error.
+    - [`ContactSection.jsx`](frontend/src/components/home/ContactSection.jsx): Formulario de contacto integrado con SQLite, validaciones de campo y autofill de usuario autenticado.
+    - [`ProjectCarousel.jsx`](frontend/src/components/home/ProjectCarousel.jsx): Carrusel dinámico e interactivo colocado en la cabecera previo a la sección Hero. Consume los proyectos activos directamente desde la API/SQLite con auto-play temporizado (5 s), pausa al interactuar, botones de avance/retroceso e indicadores por puntos.
+    - [`index.js`](frontend/src/components/home/index.js): Exportación barril para simplificar las importaciones del módulo.
+- **Modularización Integral de los Paneles de Operador y Administración (`frontend/src/components/dashboard/`)**:
+  - Arquitectura desacoplada en tres subcarpetas especializadas:
+    - **Componentes Compartidos (`dashboard/common/`)**:
+      - [`StatCard.jsx`](frontend/src/components/dashboard/common/StatCard.jsx): Tarjeta métrica universal con valor principal, unidad, icono contextual y pie descriptivo.
+      - [`FilterSearchBar.jsx`](frontend/src/components/dashboard/common/FilterSearchBar.jsx): Barra unificada de búsqueda con botón de limpieza y filtros de estado por pestañas.
+      - [`EmptyState.jsx`](frontend/src/components/dashboard/common/EmptyState.jsx): Contenedor gráfico para estados sin datos o búsquedas sin coincidencias.
+      - [`ConfirmDeleteModal.jsx`](frontend/src/components/dashboard/common/ConfirmDeleteModal.jsx): Modal genérico de confirmación destructiva para proyectos, servicios y usuarios.
+      - [`UnauthorizedView.jsx`](frontend/src/components/dashboard/common/UnauthorizedView.jsx): Pantalla estandarizada de acceso denegado (403) con opciones de regreso seguro.
+    - **Componentes del Operador (`dashboard/operator/`)**:
+      - [`OperatorHeader.jsx`](frontend/src/components/dashboard/operator/OperatorHeader.jsx): Encabezado con estado del panel, insignia de rol y botón de recarga animado.
+      - [`InquiryTable.jsx`](frontend/src/components/dashboard/operator/InquiryTable.jsx): Tabla de consultas con soporte dual para vista semántica desktop y tarjetas apiladas en móviles.
+      - [`InquiryDetailModal.jsx`](frontend/src/components/dashboard/operator/InquiryDetailModal.jsx): Modal de inspección completa de consultas y datos de auditoría.
+      - [`InquiryReplyModal.jsx`](frontend/src/components/dashboard/operator/InquiryReplyModal.jsx): Modal de respuesta por correo con selector de plantillas predefinidas y despacho de correo.
+    - **Componentes del Administrador (`dashboard/admin/`)**:
+      - [`AdminHeader.jsx`](frontend/src/components/dashboard/admin/AdminHeader.jsx): Encabezado con badge Admin Root y recarga global de datos.
+      - [`AdminTabsNav.jsx`](frontend/src/components/dashboard/admin/AdminTabsNav.jsx): Selector de pestañas principales con conteos en vivo (Resumen, Proyectos, Servicios, Usuarios).
+      - [`AdminOverviewTab.jsx`](frontend/src/components/dashboard/admin/AdminOverviewTab.jsx): Panel de métricas globales, gráficos interactivos Recharts (distribución por tipo de consulta y flujo temporal de registros) y estado SQLite.
+      - [`AdminProjectsTab.jsx`](frontend/src/components/dashboard/admin/AdminProjectsTab.jsx): Gestión y tabla de proyectos con filtros de publicación y acciones CRUD.
+      - [`ProjectFormModal.jsx`](frontend/src/components/dashboard/admin/ProjectFormModal.jsx): Formulario modal para creación y edición de proyectos.
+      - [`AdminServicesTab.jsx`](frontend/src/components/dashboard/admin/AdminServicesTab.jsx): Grilla de servicios con visualización de iconos y acciones CRUD.
+      - [`ServiceFormModal.jsx`](frontend/src/components/dashboard/admin/ServiceFormModal.jsx): Formulario modal para servicios con selector visual de iconos Lucide.
+      - [`AdminUsersTab.jsx`](frontend/src/components/dashboard/admin/AdminUsersTab.jsx): Gestión de usuarios, visualización de roles y salvaguarda contra eliminación del último administrador.
+      - [`UserRoleModal.jsx`](frontend/src/components/dashboard/admin/UserRoleModal.jsx): Modal para actualización y reasignación de roles de usuario.
+
+### Changed
+- **Páginas Orquestadoras de Paneles**:
+  - [`frontend/src/pages/OperatorDashboard.jsx`](frontend/src/pages/OperatorDashboard.jsx): Reducido de 1.123 líneas a ~300 líneas como contenedor limpio de estado y llamadas a la API.
+  - [`frontend/src/pages/AdminDashboard.jsx`](frontend/src/pages/AdminDashboard.jsx): Reducido de 2.240 líneas a ~560 líneas enfocado en la coordinación de flujos de datos.
+- **Rediseño Profesional del Pie de Página ([`Footer.jsx`](frontend/src/components/Footer.jsx))**:
+  - Reestructuración en 4 columnas equilibradas: Identidad & Estado Localhost, Navegación rápida, Stack Tecnológico y Conectividad REST/Correo.
+  - Incorporación de resplandor ambiental superior con línea de gradiente sutil acorde a la estética oscura Ether (`sky-500/50`).
+  - Botón interactivo "Subir" con icono `ArrowUp` y desplazamiento suave hacia el tope de la página (`window.scrollTo({ top: 0, behavior: 'smooth' })`).
+
+### Removed
+- **Enlaces de Acceso al Sistema en Pie de Página**:
+  - Eliminados los enlaces redundantes `/login`, `/registro`, `/operador` y `/admin` del pie de página, centralizando la autenticación y el control de accesos exclusivamente en el `Navbar.jsx` y en las rutas protegidas por rol.
+
+### Fixed
+- **Propagación de Eventos en Botones de Enlace (`Button.jsx`)**:
+  - Corregido el componente [`frontend/src/components/Button.jsx`](frontend/src/components/Button.jsx) para propagar la propiedad `onClick` hacia el componente `<Link to={to}>`, permitiendo que botones del Hero con anclas como `#proyectos` o funciones de scroll se ejecuten sin interrupciones.
+
 ## [0.7.0] - 2026-11-04
 
 ### Added

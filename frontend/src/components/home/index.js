@@ -1,0 +1,6 @@
+export { default as HeroSection } from './HeroSection'
+export { default as AboutSection } from './AboutSection'
+export { default as ServicesSection } from './ServicesSection'
+export { default as ProjectsSection, parseTechnologies } from './ProjectsSection'
+export { default as ContactSection } from './ContactSection'
+export { default as ProjectCarousel } from './ProjectCarousel'

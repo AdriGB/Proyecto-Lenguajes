@@ -49,7 +49,7 @@ export default function Button({
 
   if (to && !disabled && !loading) {
     return (
-      <Link to={to} className={combinedClasses} {...props}>
+      <Link to={to} onClick={onClick} className={combinedClasses} {...props}>
         {content}
       </Link>
     )

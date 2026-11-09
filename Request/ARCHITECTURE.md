@@ -34,6 +34,49 @@ portfolio/
 │   └── src/
 │       ├── assets/
 │       ├── components/
+│       │   ├── home/
+│       │   │   ├── HeroSection.jsx
+│       │   │   ├── AboutSection.jsx
+│       │   │   ├── ServicesSection.jsx
+│       │   │   ├── ProjectsSection.jsx
+│       │   │   ├── ContactSection.jsx
+│       │   │   ├── ProjectCarousel.jsx
+│       │   │   └── index.js
+│       │   ├── dashboard/
+│       │   │   ├── common/
+│       │   │   │   ├── StatCard.jsx
+│       │   │   │   ├── FilterSearchBar.jsx
+│       │   │   │   ├── EmptyState.jsx
+│       │   │   │   ├── ConfirmDeleteModal.jsx
+│       │   │   │   ├── UnauthorizedView.jsx
+│       │   │   │   └── index.js
+│       │   │   ├── operator/
+│       │   │   │   ├── OperatorHeader.jsx
+│       │   │   │   ├── InquiryTable.jsx
+│       │   │   │   ├── InquiryDetailModal.jsx
+│       │   │   │   ├── InquiryReplyModal.jsx
+│       │   │   │   └── index.js
+│       │   │   └── admin/
+│       │   │       ├── AdminHeader.jsx
+│       │   │       ├── AdminTabsNav.jsx
+│       │   │       ├── AdminOverviewTab.jsx
+│       │   │       ├── AdminProjectsTab.jsx
+│       │   │       ├── ProjectFormModal.jsx
+│       │   │       ├── AdminServicesTab.jsx
+│       │   │       ├── ServiceFormModal.jsx
+│       │   │       ├── AdminUsersTab.jsx
+│       │   │       ├── UserRoleModal.jsx
+│       │   │       └── index.js
+│       │   ├── Navbar.jsx
+│       │   ├── Footer.jsx
+│       │   ├── Button.jsx
+│       │   ├── Card.jsx
+│       │   ├── Badge.jsx
+│       │   ├── Input.jsx
+│       │   ├── Textarea.jsx
+│       │   ├── Modal.jsx
+│       │   ├── Alert.jsx
+│       │   └── IconResolver.jsx
 │       ├── layouts/
 │       ├── pages/
 │       ├── routes/
@@ -56,6 +99,7 @@ portfolio/
 │   └── server.js
 │
 ├── docs/
+├── Request/
 ├── .env.example
 ├── .gitignore
 └── README.md
@@ -80,7 +124,14 @@ Sus responsabilidades serán:
 
 Tailwind CSS se utilizará para construir una interfaz consistente y adaptable a distintos tamaños de pantalla.
 
-La organización de la interfaz se basará en componentes reutilizables, layouts y páginas independientes.
+La organización de la interfaz se basa en componentes modulares reutilizables, layouts y páginas independientes orquestadoras:
+
+- **Módulo Home (`components/home/`):** Desacopla la página de inicio en secciones autónomas (`HeroSection`, `AboutSection`, `ServicesSection`, `ProjectsSection`, `ContactSection`) e incluye un carrusel dinámico interactivo (`ProjectCarousel`) que consume los proyectos activos directamente desde la API.
+- **Módulo Dashboard (`components/dashboard/`):**
+  - `common/`: Componentes genéricos compartidos por los paneles de gestión (`StatCard`, `FilterSearchBar`, `EmptyState`, `ConfirmDeleteModal`, `UnauthorizedView`).
+  - `operator/`: Componentes especializados para la atención de consultas (`OperatorHeader`, `InquiryTable`, `InquiryDetailModal`, `InquiryReplyModal`).
+  - `admin/`: Componentes para la administración global (`AdminHeader`, `AdminTabsNav`, `AdminOverviewTab`, `AdminProjectsTab`, `ProjectFormModal`, `AdminServicesTab`, `ServiceFormModal`, `AdminUsersTab`, `UserRoleModal`).
+- **Páginas orquestadoras (`pages/`):** `OperatorDashboard.jsx` y `AdminDashboard.jsx` operan como controladores de estado y flujos de datos puros, delegando la presentación visual en los subcomponentes del dashboard.
 
 ## 5. Backend
 

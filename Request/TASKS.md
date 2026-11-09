@@ -132,3 +132,19 @@
 - [x] Revisar la interfaz y corregir detalles visuales pendientes.
 - [x] Actualizar la documentación y el changelog.
 - [x] Confirmar que el proyecto esté listo para presentarse en localhost.
+
+## Fase 12: Modularización de Arquitectura y Refinamiento Estético
+
+- [x] Modularizar `Home.jsx` dividiendo el monolito en subcomponentes desacoplados en `components/home/` (`HeroSection`, `AboutSection`, `ServicesSection`, `ProjectsSection`, `ContactSection`).
+- [x] Implementar el carrusel interactivo dinámico `ProjectCarousel.jsx` conectado a la base de datos SQLite y situado en la cabecera del portfolio.
+- [x] Solucionar la propagación de eventos `onClick` en el componente reutilizable `Button.jsx` para enlaces basados en react-router `<Link>`.
+- [x] Reestructurar y modularizar los paneles de gestión en `components/dashboard/`:
+  - `common/`: crear primitivas compartidas (`StatCard`, `FilterSearchBar`, `EmptyState`, `ConfirmDeleteModal`, `UnauthorizedView`).
+  - `operator/`: extraer componentes específicos del operador (`OperatorHeader`, `InquiryTable`, `InquiryDetailModal`, `InquiryReplyModal`).
+  - `admin/`: extraer componentes específicos de administración (`AdminHeader`, `AdminTabsNav`, `AdminOverviewTab`, `AdminProjectsTab`, `ProjectFormModal`, `AdminServicesTab`, `ServiceFormModal`, `AdminUsersTab`, `UserRoleModal`).
+- [x] Refactorizar `OperatorDashboard.jsx` y `AdminDashboard.jsx` como páginas orquestadoras puras de estado y controladores.
+- [x] Rediseñar el componente `Footer.jsx`:
+  - Eliminar los enlaces manuales y redundantes de la sección "Acceso al Sistema" para que el control de acceso se canalice por el Navbar y autenticación por roles.
+  - Diseñar una distribución armónica en 4 columnas (Identidad & Estado Localhost, Navegación rápida, Stack Tecnológico y Conectividad REST/Correo).
+  - Integrar línea de acento superior con resplandor ambiental y botón interactivo "Subir" con desplazamiento suave al inicio de página.
+- [x] Recompilar assets de producción de Vite y validar la totalidad de las 69 pruebas del sistema de diseño (0 fallos).

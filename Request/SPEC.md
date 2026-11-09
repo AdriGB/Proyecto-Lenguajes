@@ -49,12 +49,12 @@ No se implementará un panel de perfil para que los usuarios modifiquen sus dato
 
 Será pública e incluirá:
 
-- Presentación profesional.
-- Información personal y descripción del perfil.
-- Tecnologías y herramientas utilizadas.
-- Servicios ofrecidos.
-- Vista previa de proyectos.
-- Formulario de contacto ubicado al final de la página.
+- Carrusel interactivo de proyectos (`ProjectCarousel`) en la cabecera, conectado con la base de datos SQLite con rotación automática y controles manuales.
+- Sección Hero con presentación profesional y botones de acción rápida.
+- Información personal y descripción del perfil técnico (`AboutSection`).
+- Servicios ofrecidos con iconos interactivos y detalles de alcance (`ServicesSection`).
+- Vista previa de proyectos con filtros rápidos y fallback para imágenes (`ProjectsSection`).
+- Formulario de contacto con validaciones y autofill de sesión (`ContactSection`).
 
 ### 5.2. Registro — `/registro`
 
@@ -80,24 +80,22 @@ Mostrará la información completa del proyecto seleccionado, incluyendo descrip
 
 ### 5.6. Panel de operador — `/operador`
 
-Permitirá:
+Estructurado mediante arquitectura modular (`components/dashboard/operator/` y `components/dashboard/common/`):
 
-- Consultar los mensajes recibidos mediante el formulario de contacto.
-- Visualizar los datos de cada consulta.
-- Revisar el estado de las consultas.
-- Gestionar las respuestas mediante correo electrónico.
+- Consultar los mensajes recibidos mediante el formulario de contacto con soporte responsive para desktop y tarjetas móviles (`InquiryTable`).
+- Visualizar el detalle completo de cada consulta (`InquiryDetailModal`).
+- Revisar y filtrar el estado de las consultas (`FilterSearchBar`).
+- Gestionar respuestas oficiales por correo mediante Nodemailer con plantillas rápidas y fallback local (`InquiryReplyModal`).
 
 ### 5.7. Panel de administración — `/admin`
 
-Permitirá administrar el contenido y consultar información general del sistema.
+Estructurado mediante arquitectura modular (`components/dashboard/admin/` y `components/dashboard/common/`):
 
-Incluirá:
-
-- Gestión de proyectos y demostraciones.
-- Gestión de servicios.
-- Gestión de usuarios registrados.
-- Visualización de métricas.
-- Gráficos estadísticos mediante Recharts.
+- Navegación por pestañas de dominio (`AdminTabsNav`).
+- Métricas del sistema y gráficos estadísticos interactivos mediante Recharts (`AdminOverviewTab`).
+- Gestión integral de proyectos y demostraciones con filtros y modal CRUD (`AdminProjectsTab`, `ProjectFormModal`).
+- Gestión de servicios con selector visual de iconos Lucide y modal CRUD (`AdminServicesTab`, `ServiceFormModal`).
+- Gestión de usuarios y asignación de roles con salvaguarda contra eliminación o degradación del último administrador (`AdminUsersTab`, `UserRoleModal`).
 
 ### 5.8. Bandeja de consultas del usuario — `/mis-consultas`
 
