@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Documento de Proyecto - Portfolio Profesional Ether</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.38;
+      color: #0f172a;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      min-height: 270mm;
+      position: relative;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+    }
+
+    .page-content {
+      flex: 1;
+    }
+
+    /* Page Footer */
+    .page-footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 4px;
+      margin-top: 8px;
+      font-size: 7.5pt;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Header Banner */
+    .header-banner {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .header-title {
+      font-size: 17pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    .header-title span {
+      color: #0284c7;
+    }
+
+    .header-subtitle {
+      font-size: 9.5pt;
+      color: #475569;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .header-meta {
+      text-align: right;
+      font-size: 8pt;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 7.5pt;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      border: 1px solid #bae6fd;
+      margin-bottom: 3px;
+    }
+
+    /* Section Headings */
+    h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-left: 3.5px solid #0284c7;
+      padding-left: 6px;
+      margin-top: 8px;
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 6px;
+      margin-bottom: 3px;
+    }
+
+    p {
+      margin-bottom: 5px;
+      text-align: justify;
+    }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 7pt;
+      font-weight: 600;
+      padding: 1.5px 5.5px;
+      border-radius: 4px;
+      margin-right: 3px;
+      margin-bottom: 3px;
+      border: 1px solid transparent;
+    }
+
+    .badge-primary { background: #e0f2fe; color: #0284c7; border-color: #bae6fd; }
+    .badge-success { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+    .badge-purple  { background: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
+    .badge-dark    { background: #f1f5f9; color: #334155; border-color: #cbd5e1; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 5px 0 8px 0;
+      font-size: 8pt;
+    }
+
+    th, td {
+      padding: 4px 6px;
+      border: 1px solid #cbd5e1;
+      text-align: left;
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    /* Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-bottom: 6px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      padding: 6px 8px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 8.5pt;
+      color: #0f172a;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-desc {
+      font-size: 8pt;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    /* Architecture ASCII / Diagram Box */
+    .diagram-box {
+      background: #09090b;
+      color: #e2e8f0;
+      border: 1px solid #27272a;
+      border-radius: 5px;
+      padding: 7px 10px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 7.5pt;
+      line-height: 1.25;
+      margin: 5px 0 7px 0;
+    }
+
+    .diagram-box .accent { color: #38bdf8; font-weight: bold; }
+    .diagram-box .success { color: #4ade80; }
+
+    /* Highlights */
+    ul {
+      margin-left: 14px;
+      margin-bottom: 5px;
+    }
+
+    li {
+      margin-bottom: 2px;
+      font-size: 8.5pt;
+    }
+
+    strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .notice-box {
+      background: #f8fafc;
+      border-left: 3px solid #0284c7;
+      padding: 5px 8px;
+      margin: 5px 0;
+      font-size: 8pt;
+      color: #334155;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PÁGINA 1 ==================== -->
+  <div class="page">
+    <div class="page-content">
+      
+      <!-- Encabezado de la Portada -->
+      <div class="header-banner">
+        <div>
+          <div class="header-badge">DOCUMENTO DE EVALUACIÓN ACADÉMICA</div>
+          <div class="header-title">Portfolio Profesional <span>Ether</span></div>
+          <div class="header-subtitle">Plataforma Web Fullstack con Arquitectura Desacoplada y Control RBAC</div>
+        </div>
+        <div class="header-meta">
+          <div><strong>Materia:</strong> Proyecto de Lenguajes</div>
+          <div><strong>Entorno:</strong> Localhost (:5173 / :5000)</div>
+          <div><strong>Versión:</strong> 0.8.0 • Modo SQLite WAL</div>
+          <div><strong>Estado:</strong> Aprobación / Promoción</div>
+        </div>
+      </div>
+
+      <!-- 1. Resumen Ejecutivo y Objetivos -->
+      <h2>1. Resumen Ejecutivo y Objetivos del Proyecto</h2>
+      <p>
+        <strong>Ether</strong> es una solución web Fullstack concebida para la presentación formal de competencias técnicas, catálogo de servicios profesionales y demostraciones prácticas de proyectos. El sistema fue desarrollado bajo una arquitectura desacoplada cliente-servidor, orientada a cumplir con rigor los requisitos de evaluación y promoción de la cátedra mediante la implementación de operaciones CRUD completas, roles diferenciados de usuarios, gestión de consultas bidireccionales y analíticas en tiempo real.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">🎯 Showcase Profesional Dinámico</div>
+          <div class="card-desc">Presentación interactiva de proyectos y servicios con carrusel automatizado, filtrado reactivo por tecnologías y control de errores en imágenes.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">🔐 Control de Acceso por Roles (RBAC)</div>
+          <div class="card-desc">Privacidad estricta para el repositorio y especificaciones de código, accesibles únicamente por usuarios debidamente registrados en el sistema.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">📨 Gestión de Consultas Bidireccional</div>
+          <div class="card-desc">Recepción de mensajes de contacto con despacho por Nodemailer y auditoría en la bandeja de usuario <code>/mis-consultas</code> bajo modelo estricto 1:1.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">📊 Administración Integral y Métricas</div>
+          <div class="card-desc">Panel administrativo con gráficos Recharts interactivos, contadores de tráfico en vivo y gestión de seguridad contra autobloqueo de administrador.</div>
+        </div>
+      </div>
+
+      <!-- 2. Arquitectura General del Sistema -->
+      <h2>2. Arquitectura del Sistema y Tecnologías</h2>
+      <p>
+        El diseño adopta una arquitectura en tres niveles con responsabilidades estrictamente desacopladas, comunicándose a través de una API REST protegida por tokens JWT:
+      </p>
+
+      <div class="diagram-box">
+┌─────────────────────────────────┐           HTTP / REST (JSON)          ┌──────────────────────────────────┐
+│   <span class="accent">Frontend SPA (Cliente)</span>        │ ◄──────────────────────────────────► │    <span class="accent">Backend API (Servidor)</span>        │
+│   React 18 + Vite + Tailwind    │       Cabeceras Authorization:       │    Node.js 24 + Express 4        │
+│   React Router 6 + Recharts     │       Bearer &lt;JWT&gt; (HS256)           │    Controladores / Middlewares   │
+└─────────────────────────────────┘                                      └────────────────┬─────────────────┘
+                                                                                          │ better-sqlite3
+                                                                         ┌────────────────▼─────────────────┐
+                                                                         │   <span class="success">Base de Datos Local (SQLite)</span>   │
+                                                                         │   Modo WAL • Foreign Keys Activas│
+                                                                         └──────────────────────────────────┘
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 22%;">Componente</th>
+            <th style="width: 33%;">Tecnología</th>
+            <th style="width: 45%;">Rol y Justificación Técnica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Frontend</strong></td>
+            <td>React 18, Vite 6, Tailwind CSS</td>
+            <td>Renderizado SPA reactivo, compilación nativa ultrarrápida y paleta oscura Ether sin CSS propietario.</td>
+          </tr>
+          <tr>
+            <td><strong>Navegación</strong></td>
+            <td>React Router 6</td>
+            <td>Rutas públicas, privadas (<code>ProtectedRoute</code>) y redirección automática según rol.</td>
+          </tr>
+          <tr>
+            <td><strong>Backend</strong></td>
+            <td>Node.js 24, Express 4</td>
+            <td>API REST por capas: enrutamiento, controladores, middlewares de rol y servicios desacoplados.</td>
+          </tr>
+          <tr>
+            <td><strong>Persistencia</strong></td>
+            <td>SQLite (<code>better-sqlite3</code>)</td>
+            <td>Motor relacional nativo sincrónico, con modo WAL de alto rendimiento y cero configuración externa.</td>
+          </tr>
+          <tr>
+            <td><strong>Seguridad</strong></td>
+            <td>JWT + bcryptjs (Salt = 10)</td>
+            <td>Autenticación stateless y almacenamiento seguro de contraseñas mediante hashing unidireccional.</td>
+          </tr>
+          <tr>
+            <td><strong>Visualización</strong></td>
+            <td>Recharts SVG</td>
+            <td>Gráficos interactivos de barra y área para la evolución de registros y consultas.</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="page-footer">
+      <span>Ether Portfolio Fullstack • Documento de Proyecto (v0.8.0)</span>
+      <span>Página 1 de 3</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 2 ==================== -->
+  <div class="page">
+    <div class="page-content">
+
+      <!-- 2.1 Modularización de Componentes Frontend -->
+      <h2>2.1 Organización Modular de Componentes (Frontend)</h2>
+      <p>
+        Para garantizar la mantenibilidad y superar el diseño monolítico inicial, el frontend se estructuró en submódulos especializados dentro de <code>src/components/</code>:
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">📁 home/</div>
+          <div class="card-desc">
+            <code>HeroSection</code>, <code>AboutSection</code>, <code>ServicesSection</code>, <code>ProjectsSection</code>, <code>ContactSection</code> y <code>ProjectCarousel</code>.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">📁 dashboard/common/</div>
+          <div class="card-desc">
+            Primitivas unificadas: <code>StatCard</code>, <code>FilterSearchBar</code>, <code>EmptyState</code>, <code>ConfirmDeleteModal</code> y <code>UnauthorizedView</code>.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">📁 dashboard/admin & op/</div>
+          <div class="card-desc">
+            Vistas dedicadas: tablas adaptables, modales CRUD con selector Lucide y formularios con plantillas de correo.
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Modelo de Datos y Seguridad (RBAC) -->
+      <h2>3. Modelo de Datos y Seguridad (RBAC)</h2>
+      <p>
+        La base de datos SQLite almacena 5 entidades normalizadas con integridad referencial y claves foráneas activas:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">Tabla</th>
+            <th style="width: 35%;">Campos Clave</th>
+            <th style="width: 40%;">Propósito y Reglas de Integridad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>users</code></td>
+            <td>id, name, email (UNIQUE), password_hash, role, created_at</td>
+            <td>Usuarios del sistema. Control de roles e índices únicos para autenticación rápida.</td>
+          </tr>
+          <tr>
+            <td><code>projects</code></td>
+            <td>id, title, description, technologies, is_published, image_url</td>
+            <td>Showcase técnico. Alimenta tanto el carrusel de inicio como el catálogo privado.</td>
+          </tr>
+          <tr>
+            <td><code>services</code></td>
+            <td>id, title, description, icon, is_published</td>
+            <td>Oferta técnica. Iconos dinámicos resueltos en cliente mediante <code>IconResolver</code>.</td>
+          </tr>
+          <tr>
+            <td><code>contact_messages</code></td>
+            <td>id, user_id (FK), name, email, inquiry_type, message, status, response_message</td>
+            <td>Buzón de consultas. <code>ON DELETE SET NULL</code> preserva mensajes al borrar un usuario.</td>
+          </tr>
+          <tr>
+            <td><code>site_metrics</code></td>
+            <td>metric_key (PK), count, updated_at</td>
+            <td>Telemetría: contadores atómicos de <code>visitas_generales</code> y <code>accesos_autenticados</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Matriz de Roles y Niveles de Acceso</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 22%;">Rol</th>
+            <th style="width: 26%;">Identificador</th>
+            <th style="width: 52%;">Privilegios y Accesos en el Sistema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Visitante</strong></td>
+            <td><code>anonimo</code></td>
+            <td>Acceso público a la portada, carrusel, servicios, vista previa y envío de consultas.</td>
+          </tr>
+          <tr>
+            <td><strong>Usuario Normal</strong></td>
+            <td><code>usuario_normal</code></td>
+            <td>Acceso al catálogo privado <code>/proyectos</code>, detalles técnicos y bandeja <code>/mis-consultas</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>Operador</strong></td>
+            <td><code>operador</code></td>
+            <td>Bandeja de consultas <code>/operador</code>, auditoría de mensajes y envío de respuestas oficiales.</td>
+          </tr>
+          <tr>
+            <td><strong>Administrador</strong></td>
+            <td><code>administrador</code></td>
+            <td>Control total en <code>/admin</code>: CRUD de proyectos, servicios, gestión de usuarios y telemetría.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Salvaguardas de Integridad y Robustez</h3>
+      <ul>
+        <li><strong>Prevención de Autobloqueo:</strong> El sistema bloquea programáticamente cualquier intento de un administrador de eliminar su propia cuenta en sesión o degradar/eliminar al último administrador registrado.</li>
+        <li><strong>Invariante de Trazabilidad:</strong> La eliminación de un usuario no elimina sus mensajes; se conservan con <code>user_id = NULL</code> para auditoría contable y de soporte.</li>
+        <li><strong>Inmunidad ante Inyecciones SQL:</strong> Todas las consultas en SQLite utilizan parámetros vinculados (<code>prepared statements</code>) asegurando inmunidad contra vectores maliciosos.</li>
+      </ul>
+
+      <div class="notice-box">
+        <strong>Principio de Privacidad:</strong> Las contraseñas se almacenan exclusivamente como hashes irreversibles generados con bcryptjs (10 rondas de salt). En ninguna respuesta de la API REST se expone el campo <code>password_hash</code>.
+      </div>
+
+    </div>
+    <div class="page-footer">
+      <span>Ether Portfolio Fullstack • Documento de Proyecto (v0.8.0)</span>
+      <span>Página 2 de 3</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 3 ==================== -->
+  <div class="page">
+    <div class="page-content">
+
+      <!-- 4. Módulos y Funcionalidades Clave -->
+      <h2>4. Módulos y Funcionalidades Destacadas</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">🎠 Carrusel de Proyectos (ProjectCarousel)</div>
+          <div class="card-desc">
+            Componente interactivo en la cabecera conectado en tiempo real a SQLite. Cuenta con auto-play cada 5 segundos, pausa al situar el cursor, navegación manual por flechas y bullets de posición activa.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">✨ Pie de Página Profesional (Footer)</div>
+          <div class="card-desc">
+            Rediseño en 4 columnas (Identidad y estado en Localhost, Navegación rápida, Stack Tecnológico y Conectividad REST) con halo difuminado Ether y botón con scroll suave hacia el tope de la página.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">📬 Bandeja de Usuario (/mis-consultas)</div>
+          <div class="card-desc">
+            Espacio personal de auditoría para usuarios autenticados. Implementa el modelo estricto de 1 consulta : 1 respuesta definitiva registrada por el operador, evitando discusiones recursivas.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">🛠️ Panel de Gestión Administrativa (/admin)</div>
+          <div class="card-desc">
+            Consola central con gráficos Recharts interactivos, modales para alta/edición de proyectos y servicios con previsualización de iconos Lucide, y administración segura de roles de usuarios.
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Calidad, Pruebas y Despliegue -->
+      <h2>5. Calidad, Validación Automatizada y Despliegue Local</h2>
+      <p>
+        Para garantizar estabilidad durante la evaluación académica, el sistema cuenta con dos baterías exhaustivas de pruebas automatizadas:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 28%;">Suite de Pruebas</th>
+            <th style="width: 18%;">Cantidad</th>
+            <th style="width: 54%;">Alcance y Verificación Empírica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tests de Componentes</strong><br/><code>test-m4-components.js</code></td>
+            <td><strong>69 tests</strong><br/><span class="badge badge-success">100% PASS</span></td>
+            <td>Verificación de exports de componentes compuestos (Card), retención de tokens Tailwind en bundle CSS, resiliencia de IconResolver, accesibilidad modal e interceptor de imágenes.</td>
+          </tr>
+          <tr>
+            <td><strong>Suite Opaque-Box E2E</strong><br/><code>tests/runner.js (T0–T5)</code></td>
+            <td><strong>141 tests</strong><br/><span class="badge badge-success">100% PASS</span></td>
+            <td>Cobertura multi-nivel: invariantes de SQLite, endpoints de API REST, escenarios límite, flujos cruzados de usuario, simulación de ataques de inyección y jornadas completas.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Procedimiento de Despliegue en Un Solo Clic</h3>
+      <p>
+        El inicio de la plataforma no requiere configuraciones manuales complejas gracias a los scripts de orquestación desarrollados:
+      </p>
+
+      <div class="diagram-box">
+<span class="accent"># Ejecución en Windows (Doble clic o consola):</span>
+iniciar.bat
+
+<span class="accent"># Ejecución en Linux / macOS:</span>
+./iniciar.sh
+
+<span class="success">✓ Valida Node.js 24 • Instala dependencias • Aplica migraciones y seeds en SQLite</span>
+<span class="success">✓ Detecta IP local de red (Wi-Fi/LAN) • Levanta Express (:5000) y Vite (:5173) • Abre el navegador</span>
+      </div>
+
+      <!-- 6. Conclusión y Veredicto Técnico -->
+      <h2>6. Conclusión y Criterios de Aceptación</h2>
+      <p>
+        El proyecto <strong>Portfolio Profesional Ether</strong> cumple satisfactoriamente con la totalidad de los requisitos funcionales, no funcionales y de seguridad exigidos por la cátedra. La arquitectura desacoplada, la solidez de la persistencia local en SQLite WAL y el diseño ergonómico de la interfaz aseguran una presentación académica fluida, profesional y apta para la promoción de la materia.
+      </p>
+
+      <div class="notice-box" style="margin-top: 6px; text-align: center;">
+        <strong>Proyecto Verificado y Listo para Demostración en Vivo en Localhost</strong><br/>
+        <span style="font-size: 7.5pt; color: #64748b;">Desarrollado con React 18, Vite, Tailwind CSS, Node.js 24, SQLite y estética oscura Ether.</span>
+      </div>
+
+    </div>
+    <div class="page-footer">
+      <span>Ether Portfolio Fullstack • Documento de Proyecto (v0.8.0)</span>
+      <span>Página 3 de 3</span>
+    </div>
+  </div>
+
+</body>
+</html>

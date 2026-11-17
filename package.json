@@ -19,11 +19,16 @@
     "build": "npm run build --workspace=frontend",
     "build:frontend": "npm run build --workspace=frontend",
     "setup": "npm install && npm run db:seed && npm run build:frontend",
+    "tunnel": "node scripts/tunnel.js",
+    "share": "node scripts/tunnel.js",
     "db:migrate": "npm run db:migrate --workspace=backend",
     "db:seed": "npm run db:seed --workspace=backend",
     "db:verify": "npm run db:verify --workspace=backend"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
   }
 }

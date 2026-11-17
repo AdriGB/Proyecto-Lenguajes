@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.2] - 2026-11-17
+
+### Added
+- **Acceso Remoto fuera de la Red Local (`compartir.bat` / `scripts/tunnel.js`)**:
+  - Script de inicio rápido de túnel público seguro HTTPS mediante Cloudflare Tunnel (`trycloudflare.com`) sin requerir apertura de puertos en el router ni configuración de NAT.
+  - Auto-descarga de binario `cloudflared` en primer uso.
+  - Generación de código QR en la consola con la URL pública generada.
+  - Soporte de proxy y host headers externos en Vite (`allowedHosts: true` en `frontend/vite.config.js`).
+  - Nuevo comando `npm run share` / `npm run tunnel` en `package.json`.
+
+## [0.8.1] - 2026-11-11
+
+### Added
+- **Código QR en Consola de Inicio (`scripts/host.js` / `iniciar.bat`)**:
+  - Renderizado automático de código QR en bloques de terminal al iniciar el servidor host con la IP local detectada (ej. `http://192.168.x.x:5173`), permitiendo escanear la pantalla directamente desde la cámara del teléfono móvil al ejecutar el script de arranque.
+
 ## [0.8.0] - 2026-11-08
 
 ### Added

@@ -46,17 +46,27 @@ async function main() {
   }
 
   const localIp = getLocalIp();
+  const mobileUrl = `http://${localIp}:5173`;
 
   console.log('\x1b[1m\x1b[37mACCESO AL SERVIDOR:\x1b[0m\n');
   console.log(`  💻 \x1b[32mEn esta computadora (Host):\x1b[0m`);
   console.log(`     \x1b[1m\x1b[34mhttp://localhost:5173\x1b[0m\n`);
   console.log(`  📱 \x1b[32mEn tu móvil o en otra PC (Misma red Wi-Fi):\x1b[0m`);
-  console.log(`     \x1b[1m\x1b[35mhttp://${localIp}:5173\x1b[0m\n`);
+  console.log(`     \x1b[1m\x1b[35m${mobileUrl}\x1b[0m\n`);
+
+  try {
+    const QRCode = require('qrcode');
+    const qrTerminal = await QRCode.toString(mobileUrl, { type: 'terminal', small: true });
+    console.log('  \x1b[33m[QR] Escanea este código con la cámara de tu móvil para ingresar:\x1b[0m');
+    console.log(qrTerminal);
+  } catch (qrErr) {
+    // Fallback silencioso si el terminal no soporta renderizado de bloques
+  }
   console.log('\x1b[36m--------------------------------------------------------------\x1b[0m');
   console.log('\x1b[1m\x1b[37mUSUARIOS DE PRUEBA:\x1b[0m');
-  console.log('  • Admin:    admin@ejemplo.com    / admin123');
-  console.log('  • Operador: operador@ejemplo.com / operador123');
-  console.log('  • Usuario:  usuario@ejemplo.com  / usuario123');
+  console.log('  • Admin:    admin@portfolio.local    / admin123');
+  console.log('  • Operador: operador@portfolio.local / operador123');
+  console.log('  • Usuario:  usuario@portfolio.local  / usuario123');
   console.log('\x1b[36m==============================================================\x1b[0m\n');
   console.log('\x1b[32m[✓] Servidores iniciando...\x1b[0m');
   console.log('\x1b[33m[i] Abriendo navegador automáticamente en http://localhost:5173...\x1b[0m');
